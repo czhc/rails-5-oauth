@@ -16,6 +16,10 @@ class ApplicationController < ActionController::API
     end
   end
 
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+
   def render_unauthorized(realm = "Application")
     self.headers["WWW-Authenticate"] = %(Token realm="#{realm.gsub(/"/, "")}")
     render json: 'Bad credentials', status: :unauthorized
