@@ -28,7 +28,7 @@ module ApiOauth
     config.api_only = true
     # allow CORS from any source
     # NEEDS EDIT
-    config.middleware.insert_before 0, "Rack::Cors" do
+    config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
         resource '*', :headers => :any, :methods => [:get, :post, :options]
