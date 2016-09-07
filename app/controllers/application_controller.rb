@@ -12,7 +12,7 @@ class ApplicationController < ActionController::API
 
   def authenticate_token
     authenticate_with_http_token do |token, options|
-      @current_user = User.find_by(api_key: token)
+      @current_user = User.find_by(api_access_token: token)
       session[:user_id] = @current_user&.id
     end
   end
