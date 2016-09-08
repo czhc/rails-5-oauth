@@ -1,7 +1,5 @@
-class Api::V1::UsersController < ApplicationController
-  skip_before_action :doorkeeper_authorize!#, only: [:create]
-  # skip_before_action :authenticate, only: [:create]
-  # skip_authorization_check
+class Api::V1::UsersController < Api::V1::ApiController
+  skip_before_action :doorkeeper_authorize_api, only: :create
 
   def index
     @users = User.all
