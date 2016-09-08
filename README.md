@@ -5,7 +5,7 @@
 {
   user: {
     email: foo@bar.com,
-    password: “password"
+    password: "password"
   }
 }
 ```
@@ -14,9 +14,9 @@
 #### POST `https://ror-api-oauth.herokuapp.com/oauth/token` +
 ```javascript
 {
-   grant_type: ‘password’,
-   email: “foo@bar.com”,
-   password: “password”
+   grant_type: "password",
+   email: "foo@bar.com",
+   password: "password"
 }
 ```
 
