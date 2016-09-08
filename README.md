@@ -1,19 +1,17 @@
 # API
 ## Signup
-#### POST https://ror-api-oauth.herokuapp.com/api/v1/users
-+
+#### POST `https://ror-api-oauth.herokuapp.com/api/v1/users` +
 ```javascript
 {
- user: {
+  user: {
    email: foo@bar.com,
    password: “password"
- }
+  }
 }
 ```
 
 ## Login
-#### POST https://ror-api-oauth.herokuapp.com/oauth/token 
-+ 
+#### POST `https://ror-api-oauth.herokuapp.com/oauth/token` +
 ```javascript
 {
    grant_type: ‘password’,
@@ -22,5 +20,5 @@
 }
 ```
 ## Sync local user data
-#### GET https://ror-api-oauth.herokuapp.com/api/v1/users/sync
+#### GET `https://ror-api-oauth.herokuapp.com/api/v1/users/sync`
 `Authorization: Bearer <oauth access token>`
