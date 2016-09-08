@@ -4,8 +4,8 @@
 ```javascript
 {
   user: {
-   email: foo@bar.com,
-   password: “password"
+    email: foo@bar.com,
+    password: “password"
   }
 }
 ```
@@ -19,6 +19,7 @@
    password: “password”
 }
 ```
+
 ## Sync local user data
 #### GET `https://ror-api-oauth.herokuapp.com/api/v1/users/sync`
 `Authorization: Bearer <oauth access token>`
