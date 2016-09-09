@@ -6,11 +6,12 @@ Doorkeeper.configure do
 
   # This block will be called to check whether the resource owner is authenticated or not.
   resource_owner_authenticator do
-    Rails.logger.info "resource_owner_authenticator: #{session[:user_id]}"
-    User.find_by_id(session[:user_id]) || render(json: params.to_hash, status: 403)
+    Rails.logger.debug "resource_owner_authenticator"
+    User.find_by_id(session[:user_id]) || render(json: {}, status: 403)
   end
 
   resource_owner_from_credentials do |routes|
+    Rails.logger.debug "resource_owner_from_credentials"
     u = User.find_by(email: params[:email])
     u if u && u.authenticate(params[:password])
   end
@@ -22,7 +23,7 @@ Doorkeeper.configure do
 
   # If you want to restrict access to the web interface for adding oauth authorized applications, you need to declare the block below.
   admin_authenticator do
-    current_user.respond_to?(:admin?) && current_user&.admin?
+    current_resource_owner.respond_to?(:admin?) && current_resource_owner&.admin?
   end
 
   # Authorization Code expiration time (default 10 minutes).
@@ -106,7 +107,7 @@ Doorkeeper.configure do
   #   http://tools.ietf.org/html/rfc6819#section-4.4.2
   #   http://tools.ietf.org/html/rfc6819#section-4.4.3
   #
-  grant_flows %w(password)# %w(authorization_code client_credentials)
+  grant_flows %w(password) #any of %w(authorization_code client_credentials password)
 
   # Under some circumstances you might want to have applications auto-approved,
   # so that the user skips the authorization step.
